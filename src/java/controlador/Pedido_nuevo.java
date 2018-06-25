@@ -61,11 +61,20 @@ public class Pedido_nuevo extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        int bebida = Integer.parseInt(request.getParameter("bebida"));
-        int hamburguesa = Integer.parseInt(request.getParameter("hamburguesa"));
-        int postre = Integer.parseInt(request.getParameter("postre"));
+        int id_bebida = Integer.parseInt(request.getParameter("bebida"));
+        int id_hamburguesa = Integer.parseInt(request.getParameter("hamburguesa"));
+        int id_postre = Integer.parseInt(request.getParameter("postre"));
         
+        Bebida_DAO bebida_dao = new Bebida_DAOImp();
+        Bebida bebida = bebida_dao.findById(id_bebida);
+        Hamburguesa_DAO hamburguesa_dao = new Hamburguesa_DAOImp();
+        Hamburguesa hamburguesa = hamburguesa_dao.findById(id_hamburguesa);
+        Postre_DAO postre_dao = new Postre_DAOImp();
+        Postre postre = postre_dao.findById(id_postre);
         
+        request.getSession().setAttribute("bebida",bebida);
+        request.getSession().setAttribute("hamburguesa",hamburguesa);
+        request.getSession().setAttribute("postre",postre);
         
         response.sendRedirect("confirmar_pedido.jsp");
     }
