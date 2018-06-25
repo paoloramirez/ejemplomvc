@@ -2,7 +2,14 @@
     Document   : confirmar_pedido
     Author     : bash
 --%>
-
+<%@page import="modelo.Entity.Bebida"%>
+<%@page import="modelo.Entity.Hamburguesa"%>
+<%@page import="modelo.Entity.Postre"%>
+<%
+    Bebida bebida = (Bebida) request.getSession().getAttribute("bebida");
+    Hamburguesa hamburguesa = (Hamburguesa) request.getSession().getAttribute("hamburguesa");
+    Postr> postre = (Postre) request.getSession().getAttribute("postre");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,8 +60,16 @@
         <!--Mostrar datos-->
         
         <div class="container-fluid">
+            <p>Nombre: <%= bebida.getNombre()%></p>
+            <p>Precio: <%= bebida.getPrecio()%></p>
             
+            <p>Nombre: <%= hamburguesa.getNombre()%></p>
+            <p>Precio: <%= hamburguesa.getPrecio()%></p>
             
+            <p>Nombre: <%= postre.getNombre()%></p>
+            <p>Precio: <%= postre.getPrecio()%></p>
+            
+            <p>Total: XXXX</p>
         </div>
         
         
