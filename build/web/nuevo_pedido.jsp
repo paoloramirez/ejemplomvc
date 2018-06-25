@@ -5,9 +5,12 @@
 
 <%@page import="modelo.Entity.Bebida"%>
 <%@page import="java.util.List"%>
-<%@page import="modelo.Entity.Usuario"%>
+<%@page import="modelo.Entity.Hamburguesa"%>
+<%@page import="modelo.Entity.Postre"%>
 <%
     List<Bebida> lista_bebidas = (List<Bebida>) request.getSession().getAttribute("lista_bebidas");
+    List<Hamburguesa> lista_hamburguesas = (List<Hamburguesa>) request.getSession().getAttribute("lista_hamburguesas");
+    List<Postre> lista_postres = (List<Postre>) request.getSession().getAttribute("lista_postres");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -63,17 +66,17 @@
             
             <div class="form-group">
             <input type="hidden" name="hamburguesa" value="0">
-            <label for="carne_clasica" class="col-sm-2 radio-inline">Hamburguesa
-                <input type="radio"  name="hamburguesa" id="carne_clasica" value="1">
+            <label for="carne_clasica" class="col-sm-2 radio-inline"><%= lista_hamburguesas.get(0).getNombre()%>
+                <input type="radio"  name="hamburguesa" id="carne_clasica" value="<%= lista_hamburguesas.get(0).getId_ham()%>">
             </label>
-            <label for="pollo_clasica" class="col-sm-2 radio-inline">Pollo clasica
-                <input type="radio"  name="hamburguesa" id="pollo_clasica" value="2">
+            <label for="pollo_clasica" class="col-sm-2 radio-inline"><%= lista_hamburguesas.get(1).getNombre()%>
+                <input type="radio"  name="hamburguesa" id="pollo_clasica" value="<%= lista_hamburguesas.get(1).getId_ham()%>">
             </label>
-            <label for="queso_tocino" class="col-sm-2 radio-inline">Super Queso y Tocino
-                <input type="radio" name="hamburguesa" id="queso_tocino" value="3">
+            <label for="queso_tocino" class="col-sm-2 radio-inline"><%= lista_hamburguesas.get(2).getNombre()%>
+                <input type="radio" name="hamburguesa" id="queso_tocino" value="<%= lista_hamburguesas.get(2).getId_ham()%>">
             </label>
-            <label for="especial" class="col-sm-2 radio-inline">Especial
-                <input type="radio" name="hamburguesa" id="especial" value="4">
+            <label for="especial" class="col-sm-2 radio-inline"><%= lista_hamburguesas.get(3).getNombre()%>
+                <input type="radio" name="hamburguesa" id="especial" value="<%= lista_hamburguesas.get(3).getId_ham()%>">
             </label>
             </div>
             <!-- HAMBURGUESAS END-->
@@ -106,14 +109,14 @@
             
             <div class="form-group">
             <input type="hidden" name="postre" value="0">
-            <label for="helado_1" class="col-sm-2 radio-inline">Helado
-                <input type="radio"  name="postre" id="helado_1" value="1">
+            <label for="helado_1" class="col-sm-2 radio-inline"><%= lista_postres.get(0).getNombre()%>
+                <input type="radio"  name="postre" id="helado_1" value="<%= lista_postres.get(0).getId_pos()%>">
             </label>
-            <label for="sundae_chocolate" class="col-sm-2 radio-inline">Sundae Chocolate
-                <input type="radio"  name="postre" id="sundae_chocolate" value="2">
+            <label for="sundae_chocolate" class="col-sm-2 radio-inline"><%= lista_postres.get(1).getNombre()%>
+                <input type="radio"  name="postre" id="sundae_chocolate" value="<%= lista_postres.get(1).getId_pos()%>">
             </label>
-            <label for="tentacion_mani" class="col-sm-2 radio-inline">Tentación de mani
-                <input type="radio"  name="postre" id="tentacion_mani" value="3">
+            <label for="tentacion_mani" class="col-sm-2 radio-inline"><%= lista_postres.get(2).getNombre()%>
+                <input type="radio"  name="postre" id="tentacion_mani" value="<%= lista_postres.get(2).getId_pos()%>">
             </label>
             </div>
             <!-- POSTRES END-->
