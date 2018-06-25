@@ -79,7 +79,30 @@ public class Hamburguesa_DAOImp implements Hamburguesa_DAO{
 
     @Override
     public Hamburguesa findById(int id_ham) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from bebida where id_ham="+id_ham;
+        Hamburguesa prod = new Hamburguesa();
+        
+        try {
+            Connection con = conexion.getConnection();
+            PreparedStatement pr;
+            ResultSet rs;
+            pr = con.prepareStatement(sql);
+            
+            rs = pr.executeQuery();
+            
+            while ( rs.next())
+            {
+                prod.setId_ham(rs.getInt(1));
+                prod.setNombre(rs.getString(2));
+                prod.setPrecio(rs.getFloat(3));
+            }
+            
+            
+        } catch(Exception ev) {
+            System.out.println(ev.toString());
+        }
+        
+        return prod;
     }
 
     @Override
