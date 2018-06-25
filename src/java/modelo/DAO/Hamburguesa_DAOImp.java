@@ -48,7 +48,33 @@ public class Hamburguesa_DAOImp implements Hamburguesa_DAO{
 
     @Override
     public List<Hamburguesa> findAllHamburguesas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from hamburguesa";
+        List<Hamburguesa> list = new ArrayList<>();
+        
+        try {
+            Connection con = conexion.getConnection();
+            PreparedStatement pr;
+            ResultSet rs;
+            pr = con.prepareStatement(sql);
+            
+            rs = pr.executeQuery();
+            
+            while ( rs.next())
+            {
+                Hamburguesa prod = new Hamburguesa();
+                prod.setId_ham(rs.getInt(1));
+                prod.setNombre(rs.getString(2));
+                prod.setPrecio(rs.getFloat(3));
+                
+                list.add(prod);
+            }
+            
+            
+        } catch(Exception ev) {
+            System.out.println(ev.toString());
+        }
+        
+        return list;
     }
 
     @Override
