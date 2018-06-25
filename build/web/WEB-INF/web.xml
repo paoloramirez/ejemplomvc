@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Procesar</servlet-name>
+        <servlet-class>controlador.Procesar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Pedido_nuevo</servlet-name>
+        <servlet-class>controlador.Pedido_nuevo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Pedido_guardar</servlet-name>
+        <servlet-class>controlador.Pedido_guardar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Pedido_Init</servlet-name>
+        <servlet-class>controlador.Pedido_Init</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Procesar</servlet-name>
+        <url-pattern>/procesar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pedido_nuevo</servlet-name>
+        <url-pattern>/pedido_nuevo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pedido_guardar</servlet-name>
+        <url-pattern>/pedido_guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pedido_Init</servlet-name>
+        <url-pattern>/pedido_init</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
