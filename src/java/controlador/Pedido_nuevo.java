@@ -61,7 +61,11 @@ public class Pedido_nuevo extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        String hamburguesa = request.getParameter("hamburguesa");
+        int bebida = Integer.parseInt(request.getParameter("bebida"));
+        int hamburguesa = Integer.parseInt(request.getParameter("hamburguesa"));
+        int postre = Integer.parseInt(request.getParameter("postre"));
+        
+        
         
         response.sendRedirect("confirmar_pedido.jsp");
     }
