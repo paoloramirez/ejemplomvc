@@ -80,7 +80,30 @@ public class Bebida_DAOImp implements Bebida_DAO {
 
     @Override
     public Bebida findById(int idBeb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from bebida where idBeb="+idBeb;
+        Bebida bebida = new Bebida();
+        
+        try {
+            Connection con = conexion.getConnection();
+            PreparedStatement pr;
+            ResultSet rs;
+            pr = con.prepareStatement(sql);
+            
+            rs = pr.executeQuery();
+            
+            while ( rs.next())
+            {
+                bebida.setIdBeb(rs.getInt(1));
+                bebida.setNombre(rs.getString(2));
+                bebida.setPrecio(rs.getFloat(3));
+            }
+            
+            
+        } catch(Exception ev) {
+            System.out.println(ev.toString());
+        }
+        
+        return bebida;
     }
 
     @Override
