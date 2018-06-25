@@ -40,9 +40,15 @@ public class Pedido_Init extends HttpServlet {
         
         Bebida_DAO bebida_dao = new Bebida_DAOImp();
         List<Bebida> lista_bebidas = bebida_dao.findAllBebidas();
+        Hamburguesa_DAO hamburguesa_dao = new Hamburguesa_DAOImp();
+        List<Hamburguesa> lista_hamburguesas = hamburguesa_dao.findAllHamburguesas();
+        Postre_DAO postre_dao = new Postre_DAOImp();
+        List<Postre> lista_postres = postre_dao.findAllPostres();
         
         
         request.getSession().setAttribute("lista_bebidas", lista_bebidas);
+        request.getSession().setAttribute("lista_hamburguesas", lista_hamburguesas);
+        request.getSession().setAttribute("lista_postres", lista_postres);
         
         response.sendRedirect("nuevo_pedido.jsp");
     }
