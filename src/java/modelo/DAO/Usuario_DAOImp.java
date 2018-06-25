@@ -48,7 +48,31 @@ public class Usuario_DAOImp implements Usuario_DAO{
 
     @Override
     public List<Usuario> findAllUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from usuario";
+        List<Usuario> list = new ArrayList<>();
+        
+        try {
+            Connection con = conexion.getConnection();
+            PreparedStatement pr;
+            ResultSet rs;
+            pr = con.prepareStatement(sql);
+            
+            rs = pr.executeQuery();
+            
+            while ( rs.next())
+            {
+                Usuario prod = new Usuario();
+                prod.setDni(rs.getInt(1));
+                prod.setNombre(rs.getString(2));
+                list.add(prod);
+            }
+            
+            
+        } catch(Exception ev) {
+            System.out.println(ev.toString());
+        }
+        
+        return list;
     }
 
     @Override
