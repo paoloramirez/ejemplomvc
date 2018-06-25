@@ -48,7 +48,33 @@ public class Postre_DAOImp implements Postre_DAO{
 
     @Override
     public List<Postre> findAllPostres() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from postre";
+        List<Postre> list = new ArrayList<>();
+        
+        try {
+            Connection con = conexion.getConnection();
+            PreparedStatement pr;
+            ResultSet rs;
+            pr = con.prepareStatement(sql);
+            
+            rs = pr.executeQuery();
+            
+            while ( rs.next())
+            {
+                Postre prod = new Postre();
+                prod.setId_pos(rs.getInt(1));
+                prod.setNombre(rs.getString(2));
+                prod.setPrecio(rs.getFloat(3));
+                
+                list.add(prod);
+            }
+            
+            
+        } catch(Exception ev) {
+            System.out.println(ev.toString());
+        }
+        
+        return list;
     }
 
     @Override
